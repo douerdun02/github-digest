@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub 摘要大全 - 2026-08-19</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --bg-nav: #0d1117e0;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-yellow: #d29922;
+    --accent-orange: #d9863b;
+    --accent-red: #f85149;
+    --accent-purple: #bc8cff;
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 20px 16px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+  }
+  .header h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .header .date {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  .nav {
+    display: flex;
+    gap: 8px;
+    padding: 12px 20px;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 80px;
+    z-index: 99;
+    background: var(--bg-nav);
+    backdrop-filter: blur(8px);
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: var(--radius);
+    white-space: nowrap;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .nav-link:hover {
+    color: var(--text);
+    background: var(--bg-card);
+  }
+  .stats-bar {
+    display: flex;
+    gap: 12px;
+    padding: 16px 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .stat {
+    text-align: center;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    min-width: 100px;
+  }
+  .stat-number {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .section {
+    margin-bottom: 32px;
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .count {
+    font-size: 12px;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 400;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  @media (min-width: 640px) {
+    .card-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+  }
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+    gap: 8px;
+  }
+  .card-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    word-break: break-all;
+  }
+  .card-stars {
+    font-size: 12px;
+    color: var(--accent-yellow);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .card-body {
+    margin-bottom: 6px;
+  }
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-cn {
+    font-size: 12px;
+    color: var(--accent-green);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+  }
+  .tag {
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(88, 166, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(88, 166, 255, 0.2);
+  }
+  .card-footer {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .card-source {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+  }
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>GitHub 摘要大全</h1>
+    <div class="date">📅 2026-08-19 · 共收录 162 条内容</div>
+  </div>
+
+  <div class="nav">
+    <a href="#trending" class="nav-link">🔥 Trending 热榜</a><a href="#ai_focus" class="nav-link">🤖 AI 相关项目</a><a href="#data_focus" class="nav-link">📊 数据开发相关</a><a href="#advisories" class="nav-link">⚠️ 安全通告</a><a href="#hn_stories" class="nav-link">📰 Hacker News 热点</a><a href="#releases" class="nav-link">🚀 版本发布</a>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-number">162</div>
+      <div class="stat-label">总收录</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">72</div>
+      <div class="stat-label">AI 相关</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">14</div>
+      <div class="stat-label">数据开发</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">77</div>
+      <div class="stat-label">热榜</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">5</div>
+      <div class="stat-label">安全通告</div>
+    </div>
+  </div>
+
+  <div class="main">
+    
+    <section id="trending" class="section">
+      <h2 class="section-title">🔥 Trending 热榜 <span class="count">10</span></h2>
+      <div class="card-grid">
+        
+    <a href="https://github.com/harry0703/MoneyPrinterTurbo" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">harry0703/MoneyPrinterTurbo</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">利用 AI 大模型和自动化工作流，根据主题或关键词一键生成高清短视频。Generate HD short videos from a topic or keyword with an automated AI workflow.</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/chaitanyagiri/munder-difflin" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">chaitanyagiri/munder-difflin</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">local multi-agent harness</p>
+        <p class="card-cn">📖 本地多智能体利用</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/akitaonrails/ai-memory" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">akitaonrails/ai-memory</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Solution for long term memory for agent coding CLIs and to facilitate handoff between different agent vendors</p>
+        <p class="card-cn">📖 用于代理编码 CLI 的长期记忆解决方案，并促进不同代理供应商之间的切换</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/volcengine/OpenViking" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">volcengine/OpenViking</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.</p>
+        <p class="card-cn">📖 人工智能代理的自我进化上下文数据库。统一代理记忆、知识 RAG 和技能。</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/mukul975/Anthropic-Cybersecurity-Skills" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">mukul975/Anthropic-Cybersecurity-Skills</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">817 structured cybersecurity skills for AI agents · Mapped to 6 frameworks: MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, D3FEND, NIST AI RMF & MITRE F3 (Fight Fraud) · agentskills.io standard · Works with</p>
+        <p class="card-cn">📖 AI 代理的 817 项结构化网络安全技能 · 映射到 6 个框架：MITRE ATT&CK、NIST CSF 2.0、MITRE ATLAS、D3FEND、NIST AI RMF 和 MITRE F3（打击欺诈） ·agentskills.io 标准 · 适用于</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/public-apis/public-apis" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">public-apis/public-apis</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">A collective list of free APIs</p>
+        <p class="card-cn">📖 免费 API 集合列表</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/basecamp/omarchy" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">basecamp/omarchy</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Beautiful, Modern & Opinionated Linux</p>
+        <p class="card-cn">📖 美丽、现代、有主见的 Linux</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/agalwood/Motrix" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">agalwood/Motrix</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">A full-featured download manager.</p>
+        <p class="card-cn">📖 功能齐全的下载管理器。</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/NawfalMotii79/PLFM_RADAR" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">NawfalMotii79/PLFM_RADAR</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Open-source, low-cost 10.5 GHz PLFM phased array RADAR system</p>
+        <p class="card-cn">📖 开源、低成本 10.5 GHz PLFM 相控阵雷达系统</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/jundot/omlx" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">jundot/omlx</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">LLM inference server with continuous batching & SSD caching for Apple Silicon — managed from the macOS menu bar</p>
+        <p class="card-cn">📖 LLM 推理服务器，具有适用于 Apple Silicon 的连续批处理和 SSD 缓存 - 从 macOS 菜单栏进行管理</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+      </div>
+    </section>
+    
+    <section id="ai_focus" class="section">
+      <h2 class="section-title">🤖 AI 相关项目 <span class="count">10</span></h2>
+      <div class="card-grid">
+        
+    <a href="https://github.com/chaitanyagiri/munder-difflin" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">chaitanyagiri/munder-difflin</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">local multi-agent harness</p>
+        <p class="card-cn">📖 本地多智能体利用</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/akitaonrails/ai-memory" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">akitaonrails/ai-memory</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Solution for long term memory for agent coding CLIs and to facilitate handoff between different agent vendors</p>
+        <p class="card-cn">📖 用于代理编码 CLI 的长期记忆解决方案，并促进不同代理供应商之间的切换</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/volcengine/OpenViking" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">volcengine/OpenViking</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.</p>
+        <p class="card-cn">📖 人工智能代理的自我进化上下文数据库。统一代理记忆、知识 RAG 和技能。</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/mukul975/Anthropic-Cybersecurity-Skills" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">mukul975/Anthropic-Cybersecurity-Skills</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">817 structured cybersecurity skills for AI agents · Mapped to 6 frameworks: MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, D3FEND, NIST AI RMF & MITRE F3 (Fight Fraud) · agentskills.io standard · Works with</p>
+        <p class="card-cn">📖 AI 代理的 817 项结构化网络安全技能 · 映射到 6 个框架：MITRE ATT&CK、NIST CSF 2.0、MITRE ATLAS、D3FEND、NIST AI RMF 和 MITRE F3（打击欺诈） ·agentskills.io 标准 · 适用于</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/jundot/omlx" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">jundot/omlx</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">LLM inference server with continuous batching & SSD caching for Apple Silicon — managed from the macOS menu bar</p>
+        <p class="card-cn">📖 LLM 推理服务器，具有适用于 Apple Silicon 的连续批处理和 SSD 缓存 - 从 macOS 菜单栏进行管理</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/microsoft/qlib" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">microsoft/qlib</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, incl</p>
+        <p class="card-cn">📖 Qlib是一个面向人工智能的量化投资平台，旨在利用人工智能技术赋能量化研究，从探索想法到实现产品。 Qlib 支持多种 ML 建模范例，包括</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/browser-use/video-use" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">browser-use/video-use</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Edit videos with coding agents</p>
+        <p class="card-cn">📖 使用编码代理编辑视频</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/pipeshub-ai/pipeshub-ai" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">pipeshub-ai/pipeshub-ai</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">PipesHub is an open-source fully extensible AI context layer that unifies your business data for explainable enterprise search and agentic workflow automation.</p>
+        <p class="card-cn">📖 PipesHub 是一个完全可扩展的开源 AI 上下文层，可统一您的业务数据，以实现可解释的企业搜索和代理工作流程自动化。</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/unslothai/unsloth" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">unslothai/unsloth</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Local UI to run and train LLMs and diffusion models, including Qwen3.8, Kimi K3, MiniMax-H3, Gemma 4, DeepSeek-V4, FLUX and more.</p>
+        <p class="card-cn">📖 用于运行和训练 LLM 和扩散模型的本地 UI，包括 Qwen3.8、Kimi K3、MiniMax-H3、Gemma 4、DeepSeek-V4、FLUX 等。</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/anthropics/claude-code" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">anthropics/claude-code</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows </p>
+        <p class="card-cn">📖 Claude Code 是一种代理编码工具，位于您的终端中，了解您的代码库，并通过执行例行任务、解释复杂代码和处理 git 工作流程来帮助您更快地编码</p>
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+      </div>
+    </section>
+    
+    <section id="data_focus" class="section">
+      <h2 class="section-title">📊 数据开发相关 <span class="count">10</span></h2>
+      <div class="card-grid">
+        
+    <a href="https://github.com/Dujltqzv/Some-Many-Books" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">Dujltqzv/Some-Many-Books</span>
+        <span class="card-stars">★ 22.5k</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">个人收藏书籍列表　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">chinese-picks</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/tangyudi/Ai-Learn" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">tangyudi/Ai-Learn</span>
+        <span class="card-stars">★ 13.3k</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">人工智能学习路线图，整理近200个实战案例与项目，免费提供配套教材，零基础入门，就业实战！包括：Python，数学，机器学习，数据分析，深度学习，计算机视觉，自然语言处理，PyTorch tensorflow machine-learning,deep-learning data-analysis data-mining mathematics data-science artificial-in</p>
+        
+        <div class="tags"><span class="tag">algorithm</span><span class="tag">artificial-intelligence</span><span class="tag">caffe</span><span class="tag">cv</span><span class="tag">data-analysis</span></div>
+      </div>
+      <div class="card-footer">
+        <span class="card-source">chinese-picks</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/d3/d3" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">d3/d3</span>
+        <span class="card-stars">★ 113.5k</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Bring data to life with SVG, Canvas and HTML. :bar_chart::chart_with_upwards_trend::tada:</p>
+        
+        <div class="tags"><span class="tag">chart</span><span class="tag">charts</span><span class="tag">d3</span><span class="tag">data-visualization</span><span class="tag">svg</span></div>
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-search</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/supabase/supabase" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">supabase/supabase</span>
+        <span class="card-stars">★ 108.2k</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.</p>
+        
+        <div class="tags"><span class="tag">ai</span><span class="tag">alternative</span><span class="tag">auth</span><span class="tag">database</span><span class="tag">deno</span></div>
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-search</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/bregman-arie/devops-exercises" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">bregman-arie/devops-exercises</span>
+        <span class="card-stars">★ 84.1k</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Linux, Jenkins, AWS, SRE, Prometheus, Docker, Python, Ansible, Git, Kubernetes, Terraform, OpenStack, SQL, NoSQL, Azure, GCP, DNS, Elastic, Network, Virtualization. DevOps Interview Questions</p>
+        
+        <div class="tags"><span class="tag">ansible</span><span class="tag">aws</span><span class="tag">azure</span><span class="tag">coding</span><span class="tag">containers</span></div>
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-search</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/grafana/grafana" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">grafana/grafana</span>
+        <span class="card-stars">★ 76.3k</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">The open and composable observability and data visualization platform. Visualize metrics, logs, and traces from multiple sources like Prometheus, Loki, Elasticsearch, InfluxDB, Postgres and many more.</p>
+        
+        <div class="tags"><span class="tag">alerting</span><span class="tag">analytics</span><span class="tag">business-intelligence</span><span class="tag">dashboard</span><span class="tag">data-visualization</span></div>
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-search</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/redis/redis" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">redis/redis</span>
+        <span class="card-stars">★ 76.0k</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">For developers, who are building real-time data-driven applications, Redis is the preferred, fastest, and most feature-rich cache, data structure server, and document and vector query engine.</p>
+        
+        <div class="tags"><span class="tag">cache</span><span class="tag">caching</span><span class="tag">database</span><span class="tag">distributed-systems</span><span class="tag">in-memory</span></div>
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-search</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/apache/superset" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">apache/superset</span>
+        <span class="card-stars">★ 74.3k</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Apache Superset is a Data Visualization and Data Exploration Platform</p>
+        
+        <div class="tags"><span class="tag">analytics</span><span class="tag">apache</span><span class="tag">apache-superset</span><span class="tag">asf</span><span class="tag">bi</span></div>
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-search</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/getlago/lago" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">getlago/lago</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Open Source Metering and Usage Based Billing API ⭐️ Consumption tracking, Subscription management, Pricing iterations, Payment orchestration & Revenue analytics</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/prometheus/prometheus" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">prometheus/prometheus</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">The Prometheus monitoring system and time series database.</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-trending</span>
+      </div>
+    </a>
+    
+      </div>
+    </section>
+    
+    <section id="advisories" class="section">
+      <h2 class="section-title">⚠️ 安全通告 <span class="count">5</span></h2>
+      <div class="card-grid">
+        
+    <a href="https://github.com/advisories/GHSA-rh9c-rqvg-f7pr" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">linuxfabrik-lib: Arbitrary root file read via live --test argument (lib.lftest) across sudoers-whitelisted plugins (LPE)</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">## Summary
+Every Linuxfabrik check plugin that supports the shared `--test` argument (routed through `lib.lftest.test()`) will, when `--test` is supplied, treat the first CSV element as a filesystem p</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-advisory</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/advisories/GHSA-hfg8-hc9c-6c3h" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">moby/go-archive: Crafted tar archive can write outside the extraction directory</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">### Summary
+The tar extraction routines in `moby/go-archive` (`Unpack`, `UnpackLayer`, `Untar`/`UntarUncompressed`, and the `ApplyLayer` helpers) do not confine filesystem operations to the destinatio</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-advisory</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/advisories/GHSA-7gww-x7fh-jf9j" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">LibreNMS: SSRF-driven stored XSS via Oxidized API response fields in device showconfig page</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">### Summary
+The Oxidized integration URL (`oxidized.url`) is admin-configurable. LibreNMS fetches device info and version history from that URL and renders JSON fields (`name`, `ip`, `model`, `author`</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-advisory</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/advisories/GHSA-7cj5-v4pp-v632" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">LibreNMS: Stored XSS via graph_descr admin config settings echoed without escaping to all authenticated users</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">### Summary
+The `graph_descr.<graphtype>` family of settings is echoed verbatim without `htmlspecialchars()` in `includes/html/pages/graphs.inc.php:194`. Any admin can store a malicious HTML payload t</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-advisory</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/advisories/GHSA-jf24-8g2h-2wg7" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">LibreNMS Vulnerable to Remote Code Execution via AboutController</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc"># Remote Code Execution via AboutController in LibreNMS
+
+## Summary
+
+A Remote Code Execution (RCE) vulnerability exists in LibreNMS 26.3.1 through the AboutController. An authenticated administrator c</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-advisory</span>
+      </div>
+    </a>
+    
+      </div>
+    </section>
+    
+    <section id="hn_stories" class="section">
+      <h2 class="section-title">📰 Hacker News 热点 <span class="count">9</span></h2>
+      <div class="card-grid">
+        
+    <a href="https://openlogi.org/en" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">OpenLogi</span>
+        <span class="card-stars">★ 667</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Score: 667 | by amatheus</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">hacker-news</span>
+      </div>
+    </a>
+    
+    <a href="https://nicholascharriere.com/blog/being-ambitious-and-being-a-dad/" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">Being ambitious and being a dad</span>
+        <span class="card-stars">★ 496</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Score: 496 | by nichochar</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">hacker-news</span>
+      </div>
+    </a>
+    
+    <a href="https://www.ikea.com/se/en/customer-service/knowledge/articles/6f564c4d-2ccc-46de-b643-545a3948dc79.html" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">How does IKEA come up with names for its products?</span>
+        <span class="card-stars">★ 349</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Score: 349 | by NaOH</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">hacker-news</span>
+      </div>
+    </a>
+    
+    <a href="https://www.cerebras.ai/cs4" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">Cerebras CS-4</span>
+        <span class="card-stars">★ 279</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Score: 279 | by sunils34</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">hacker-news</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/DenisSergeevitch/desktop-fly" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">A 3D fruit fly on macOS desktop powered by the real FlyWire connectome</span>
+        <span class="card-stars">★ 279</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Score: 279 | by phoenix120</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">hacker-news</span>
+      </div>
+    </a>
+    
+    <a href="https://www.bbc.com/news/articles/c1l1r1zne1ro" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">Scientists stunned by children's lung recovery in ultra low emission zone</span>
+        <span class="card-stars">★ 260</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Score: 260 | by dabinat</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">hacker-news</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/pg83/solo" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">Solo – a .so loader for static Linux binaries</span>
+        <span class="card-stars">★ 144</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Score: 144 | by zX41ZdbW</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">hacker-news</span>
+      </div>
+    </a>
+    
+    <a href="https://www.youtube.com/watch?v=Co57SfcT-h0" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">Supersonic Trebuchet [video]</span>
+        <span class="card-stars">★ 106</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Score: 106 | by CharlesW</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">hacker-news</span>
+      </div>
+    </a>
+    
+    <a href="https://terrytao.wordpress.com/2026/08/18/palomar-a-registry-of-lean-verified-mathematics/" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">Palomar: A registry of Lean verified mathematics</span>
+        <span class="card-stars">★ 103</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Score: 103 | by matt_d</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">hacker-news</span>
+      </div>
+    </a>
+    
+      </div>
+    </section>
+    
+    <section id="releases" class="section">
+      <h2 class="section-title">🚀 版本发布 <span class="count">10</span></h2>
+      <div class="card-grid">
+        
+    <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.235" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">anthropics/claude-code v2.1.235</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">## What's changed
+
+- Added an optional `spellcheck` setting that underlines misspelled words in the prompt input as you type, using your installed `aspell`, `hunspell`, or `ispell`
+- Fixed whole-promp</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-release</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.234" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">anthropics/claude-code v2.1.234</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">## What's changed
+
+- Added the optional `CLAUDE_CODE_PROJECT_DIR_NAME` environment variable: hosts that give each session its own config directory can choose a short name for the per-project transcrip</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-release</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.233" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">anthropics/claude-code v2.1.233</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">## What's changed
+
+- Added GitLab merge request URL support to the `--worktree` flag and the `claude agents` view (where MRs display as `!N`)
+- Added an opt-in `forward_user_identity` apps gateway set</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-release</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/langgenius/dify/releases/tag/1.16.1" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">langgenius/dify 1.16.1</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">## What's Changed
+
+### New Features
+**Tool Multi-Select Input**
+- Workflow tool nodes now support multi-select dropdown inputs, allowing users to choose multiple values from a predefined list when</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-release</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/langgenius/dify/releases/tag/1.16.0" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">langgenius/dify 1.16.0</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc"># Introducing Dify Agent *(Beta)*: A New Agent Experience in Dify
+
+> [!WARNING]
+> You should provide Dify Agent services ⚠️**only to trusted, non-malicious users**⚠️.
+
+As many of you know, the sh</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-release</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/langgenius/dify/releases/tag/1.16.0-rc1" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">langgenius/dify 1.16.0-rc1</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc"># Introducing Dify Agent *(Experimental)*: A New Agent Experience in Dify
+
+> [!WARNING]
+> You should provide Dify Agent services ⚠️**only to trusted, non-malicious users**⚠️.
+
+As many of you know</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-release</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/microsoft/vscode/releases/tag/1.134.0" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">microsoft/vscode 1.134.0</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">https://code.visualstudio.com/updates/v1_134</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-release</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/microsoft/vscode/releases/tag/1.133.0" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">microsoft/vscode 1.133.0</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">https://code.visualstudio.com/updates/v1_133</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-release</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/microsoft/vscode/releases/tag/1.132.1" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">microsoft/vscode 1.132.1</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">https://code.visualstudio.com/updates/v1_132</p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-release</span>
+      </div>
+    </a>
+    
+    <a href="https://github.com/pytorch/pytorch/releases/tag/v2.13.0" target="_blank" class="card">
+      <div class="card-header">
+        <span class="card-name">pytorch/pytorch v2.13.0</span>
+        <span class="card-stars">★ 0</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc"># PyTorch 2.13.0 Release Notes
+
+- [Highlights](#highlights)
+- [Backwards Incompatible Changes](#backwards-incompatible-changes)
+- [Deprecations](#deprecations)
+- [New Features](#new-features)
+- </p>
+        
+        
+      </div>
+      <div class="card-footer">
+        <span class="card-source">github-release</span>
+      </div>
+    </a>
+    
+      </div>
+    </section>
+    
+  </div>
+
+  <div class="footer">
+    <p>由 WorkBuddy 自动生成 · 每天 10:00 更新</p>
+    <p><a href="https://sct.ftqq.com" target="_blank">微信推送由 Server酱 提供</a></p>
+  </div>
+</body>
+</html>
