@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+data/
+.env
+config_local.json
+
+# Git
+.git/
