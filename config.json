@@ -1,0 +1,19 @@
+{
+  "sendkeys": [
+    "SCT401075TADIzhNIZaLJYbF6FxWxkLv8b",
+    "SCT401599TTyZR30HuSwqwyXk8ESJKblUK"
+  ],
+  "daily_time": "10:00",
+  "focus": {
+    "ai": ["agent", "skill", "llm", "claude", "chatbot", "rag", "mcp", "ai-tools", "deepseek", "openai", "llama"],
+    "data": ["sql", "etl", "data-engineering", "data-visualization", "database", "spark", "warehouse", "dbt", "airflow", "pandas"]
+  },
+  "watch_repos": [
+    "anthropics/claude-code",
+    "langgenius/dify",
+    "microsoft/vscode",
+    "pytorch/pytorch",
+    "dbt-labs/dbt-core"
+  ],
+  "github_token": ""
+}
