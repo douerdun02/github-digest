@@ -1,0 +1,2548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub 摘要大全 - 2026-09-02</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --bg-nav: #0d1117e0;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-yellow: #d29922;
+    --accent-orange: #d9863b;
+    --accent-red: #f85149;
+    --accent-purple: #bc8cff;
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 20px 16px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+  }
+  .header h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .header .date {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  .nav {
+    display: flex;
+    gap: 8px;
+    padding: 12px 20px;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 80px;
+    z-index: 99;
+    background: var(--bg-nav);
+    backdrop-filter: blur(8px);
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: var(--radius);
+    white-space: nowrap;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .nav-link:hover {
+    color: var(--text);
+    background: var(--bg-card);
+  }
+  .stats-bar {
+    display: flex;
+    gap: 12px;
+    padding: 16px 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .stat {
+    text-align: center;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    min-width: 100px;
+  }
+  .stat-number {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .section {
+    margin-bottom: 32px;
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .count {
+    font-size: 12px;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 400;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  @media (min-width: 640px) {
+    .card-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: all 0.2s;
+    overflow: hidden;
+  }
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+  }
+  .card-link {
+    display: block;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .card-link:hover {
+    transform: translateY(-1px);
+  }
+  .star-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.3);
+    color: var(--text-muted);
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 10;
+    line-height: 1;
+  }
+  .star-btn:hover {
+    background: rgba(210, 153, 34, 0.3);
+    color: var(--accent-yellow);
+    transform: scale(1.2);
+  }
+  .star-btn.starred {
+    color: var(--accent-yellow);
+    background: rgba(210, 153, 34, 0.25);
+  }
+  .card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+  }
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+    gap: 8px;
+  }
+  .card-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    word-break: break-all;
+  }
+  .card-stars {
+    font-size: 12px;
+    color: var(--accent-yellow);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .card-body {
+    margin-bottom: 6px;
+  }
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-cn {
+    font-size: 12px;
+    color: var(--accent-green);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+  }
+  .tag {
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(88, 166, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(88, 166, 255, 0.2);
+  }
+  .card-footer {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .card-source {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* 作者推荐卡片 */
+  .author-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  @media (min-width: 640px) {
+    .author-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .author-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: all 0.2s;
+    overflow: hidden;
+  }
+  .author-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent-purple);
+    transform: translateY(-2px);
+  }
+  .author-card-link {
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .author-card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .author-meta {
+    flex: 1;
+    min-width: 0;
+  }
+  .author-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    display: block;
+  }
+  .author-source {
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: block;
+    margin-top: 2px;
+  }
+  .author-stars {
+    font-size: 13px;
+    color: var(--accent-yellow);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .author-card-body {
+    padding-left: 0;
+  }
+  .author-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .tag-author {
+    color: var(--accent-purple);
+    background: rgba(188, 140, 255, 0.1);
+    border-color: rgba(188, 140, 255, 0.2);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+  }
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>GitHub 摘要大全</h1>
+    <div class="date">📅 2026-09-02 · 共收录 258 条内容</div>
+  </div>
+
+  <div class="nav">
+    <a href="#favorites" class="nav-link" style="color:var(--accent-yellow);font-weight:600;">⭐ 收藏夹</a>
+    <a href="#chinese_articles" class="nav-link">📝 📝 中文文章动态</a><a href="#chinese_picks" class="nav-link">🇨🇳 🇨🇳 中文热门项目</a><a href="#chinese_resources" class="nav-link">📚 📚 资源合集推荐</a><a href="#author_recommends" class="nav-link">👤 👤 中文作者推荐</a><a href="#useful_tools" class="nav-link">🛠️ 🛠️ 实用软件推荐</a><a href="#trending" class="nav-link">🔥 Trending 热榜</a><a href="#ai_focus" class="nav-link">🤖 AI 相关项目</a><a href="#data_focus" class="nav-link">📊 数据开发相关</a><a href="#discussions" class="nav-link">💬 热门讨论</a><a href="#advisories" class="nav-link">⚠️ 安全通告</a><a href="#releases" class="nav-link">🚀 版本发布</a>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-number">258</div>
+      <div class="stat-label">总收录</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">94</div>
+      <div class="stat-label">AI 相关</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">26</div>
+      <div class="stat-label">数据开发</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">90</div>
+      <div class="stat-label">热榜</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">5</div>
+      <div class="stat-label">安全通告</div>
+    </div>
+  </div>
+
+  <div class="main">
+    <section id="favorites" class="section" style="display:none;">
+      <h2 class="section-title">⭐ 我的收藏夹 <span class="count" id="fav-count">0</span></h2>
+      <div id="favorites-list" class="card-grid">
+        <div class="empty-state">还没有收藏内容，点击卡片旁的 ☆ 按钮即可收藏</div>
+      </div>
+    </section>
+    
+    <section id="chinese_articles" class="section">
+      <h2 class="section-title">📝 📝 中文文章动态 <span class="count">10</span></h2>
+      <div class="card-grid">
+        
+    <div class="card">
+      <button class="star-btn" data-id="github.com_ascoders_weekly_issues_535" data-name="【开源自荐】A Box of Tools：35 个纯前端的文件工具，源码即浏览器运行的代码" data-url="https://github.com/ascoders/weekly/issues/535" data-desc="前端精读周刊" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/ascoders/weekly/issues/535" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">【开源自荐】A Box of Tools：35 个纯前端的文件工具，源码即浏览器运行的代码</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">前端精读周刊</p>
+          
+          <div class="tags"><span class="tag">前端精读</span><span class="tag">周刊</span><span class="tag">中文</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">ascoders-weekly</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_ascoders_weekly_issues_534" data-name="【开源自荐】DSH Studio：跨平台 DeepSeek Harness 桌面管理器" data-url="https://github.com/ascoders/weekly/issues/534" data-desc="前端精读周刊" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/ascoders/weekly/issues/534" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">【开源自荐】DSH Studio：跨平台 DeepSeek Harness 桌面管理器</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">前端精读周刊</p>
+          
+          <div class="tags"><span class="tag">前端精读</span><span class="tag">周刊</span><span class="tag">中文</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">ascoders-weekly</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_ascoders_weekly_issues_533" data-name="[开源推荐] Cicada：一个15KB的轻量白板" data-url="https://github.com/ascoders/weekly/issues/533" data-desc="前端精读周刊" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/ascoders/weekly/issues/533" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">[开源推荐] Cicada：一个15KB的轻量白板</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">前端精读周刊</p>
+          
+          <div class="tags"><span class="tag">前端精读</span><span class="tag">周刊</span><span class="tag">中文</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">ascoders-weekly</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_ascoders_weekly_issues_532" data-name="【文章自荐】Codex 国内完整配置教程：从申请 Key 到接入 TeamoRouter 智能路由" data-url="https://github.com/ascoders/weekly/issues/532" data-desc="前端精读周刊" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/ascoders/weekly/issues/532" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">【文章自荐】Codex 国内完整配置教程：从申请 Key 到接入 TeamoRouter 智能路由</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">前端精读周刊</p>
+          
+          <div class="tags"><span class="tag">前端精读</span><span class="tag">周刊</span><span class="tag">中文</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">ascoders-weekly</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_ascoders_weekly_issues_530" data-name="💡 建议：社区增长与曝光策略" data-url="https://github.com/ascoders/weekly/issues/530" data-desc="前端精读周刊" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/ascoders/weekly/issues/530" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">💡 建议：社区增长与曝光策略</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">前端精读周刊</p>
+          
+          <div class="tags"><span class="tag">前端精读</span><span class="tag">周刊</span><span class="tag">中文</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">ascoders-weekly</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_ascoders_weekly_issues_529" data-name="【开源自荐】CloudPing：基于云端的、分布式的网络探测与诊断平台" data-url="https://github.com/ascoders/weekly/issues/529" data-desc="前端精读周刊" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/ascoders/weekly/issues/529" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">【开源自荐】CloudPing：基于云端的、分布式的网络探测与诊断平台</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">前端精读周刊</p>
+          
+          <div class="tags"><span class="tag">前端精读</span><span class="tag">周刊</span><span class="tag">中文</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">ascoders-weekly</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_ascoders_weekly_issues_528" data-name="【开源自荐】Claude Statistics：macOS 菜单栏原生应用，实时监控 Claude Code 的 Token 用量与费用" data-url="https://github.com/ascoders/weekly/issues/528" data-desc="前端精读周刊" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/ascoders/weekly/issues/528" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">【开源自荐】Claude Statistics：macOS 菜单栏原生应用，实时监控 Claude Code 的 Token 用量与费用</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">前端精读周刊</p>
+          
+          <div class="tags"><span class="tag">前端精读</span><span class="tag">周刊</span><span class="tag">中文</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">ascoders-weekly</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_ascoders_weekly_issues_527" data-name="【开源自荐】Blade Agent SDK：面向 Node.js 的 Session-first AI Agent 开发框架" data-url="https://github.com/ascoders/weekly/issues/527" data-desc="前端精读周刊" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/ascoders/weekly/issues/527" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">【开源自荐】Blade Agent SDK：面向 Node.js 的 Session-first AI Agent 开发框架</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">前端精读周刊</p>
+          
+          <div class="tags"><span class="tag">前端精读</span><span class="tag">周刊</span><span class="tag">中文</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">ascoders-weekly</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_ascoders_weekly_issues_526" data-name="【开源自荐】OpeniLink Hub：让微信接入 Claude/ChatGPT 自动回复，应用市场一键查股票、生图、转发到飞书" data-url="https://github.com/ascoders/weekly/issues/526" data-desc="前端精读周刊" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/ascoders/weekly/issues/526" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">【开源自荐】OpeniLink Hub：让微信接入 Claude/ChatGPT 自动回复，应用市场一键查股票、生图、转发到飞书</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">前端精读周刊</p>
+          
+          <div class="tags"><span class="tag">前端精读</span><span class="tag">周刊</span><span class="tag">中文</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">ascoders-weekly</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_ascoders_weekly_issues_525" data-name="【开发自荐】看图识梗：一个看图猜词语的趣味小程序" data-url="https://github.com/ascoders/weekly/issues/525" data-desc="前端精读周刊" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/ascoders/weekly/issues/525" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">【开发自荐】看图识梗：一个看图猜词语的趣味小程序</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">前端精读周刊</p>
+          
+          <div class="tags"><span class="tag">前端精读</span><span class="tag">周刊</span><span class="tag">中文</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">ascoders-weekly</span>
+        </div>
+      </a>
+    </div>
+    
+      </div>
+    </section>
+    
+    <section id="chinese_picks" class="section">
+      <h2 class="section-title">🇨🇳 🇨🇳 中文热门项目 <span class="count">10</span></h2>
+      <div class="card-grid">
+        
+    <div class="card">
+      <button class="star-btn" data-id="github.com_521xueweihan_HelloGitHub" data-name="521xueweihan/HelloGitHub" data-url="https://github.com/521xueweihan/HelloGitHub" data-desc=":octocat: 分享 GitHub 上有趣、入门级的开源项目。Share interesting, entry-level open source projects on GitHub." onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/521xueweihan/HelloGitHub" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">521xueweihan/HelloGitHub</span>
+          <span class="card-stars">★ 174.2k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">:octocat: 分享 GitHub 上有趣、入门级的开源项目。Share interesting, entry-level open source projects on GitHub.</p>
+          
+          <div class="tags"><span class="tag">awesome</span><span class="tag">github</span><span class="tag">hellogithub</span><span class="tag">python</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-picks</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_harry0703_MoneyPrinterTurbo" data-name="harry0703/MoneyPrinterTurbo" data-url="https://github.com/harry0703/MoneyPrinterTurbo" data-desc="利用 AI 大模型和自动化工作流，根据主题或关键词一键生成高清短视频。Generate HD short videos from a topic or keyword with an automate" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/harry0703/MoneyPrinterTurbo" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">harry0703/MoneyPrinterTurbo</span>
+          <span class="card-stars">★ 119.5k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">利用 AI 大模型和自动化工作流，根据主题或关键词一键生成高清短视频。Generate HD short videos from a topic or keyword with an automated AI workflow.</p>
+          
+          <div class="tags"><span class="tag">ai-video-generator</span><span class="tag">content-creation</span><span class="tag">ffmpeg</span><span class="tag">instagram-reels</span><span class="tag">llm</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-picks</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_fighting41love_funNLP" data-name="fighting41love/funNLP" data-url="https://github.com/fighting41love/funNLP" data-desc="中英文敏感词、语言检测、中外手机/电话归属地/运营商查询、名字推断性别、手机号抽取、身份证抽取、邮箱抽取、中日文人名库、中文缩写库、拆字词典、词汇情感值、停用词、反动词表、暴恐词表、繁简体转换、英文模" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/fighting41love/funNLP" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">fighting41love/funNLP</span>
+          <span class="card-stars">★ 82.8k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">中英文敏感词、语言检测、中外手机/电话归属地/运营商查询、名字推断性别、手机号抽取、身份证抽取、邮箱抽取、中日文人名库、中文缩写库、拆字词典、词汇情感值、停用词、反动词表、暴恐词表、繁简体转换、英文模拟中文发音、汪峰歌词生成器、职业名称词库、同义词库、反义词库、否定词库、汽车品牌词库、汽车零件词库、连续英文切割、各种中文词向量、公司名字大全、古诗词库、IT词库、财经词库、成语词库、地名词库、历史名</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-picks</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_binary-husky_gpt_academic" data-name="binary-husky/gpt_academic" data-url="https://github.com/binary-husky/gpt_academic" data-desc="为GPT/GLM等LLM大语言模型提供实用化交互接口，特别优化论文阅读/润色/写作体验，模块化设计，支持自定义快捷按钮&函数插件，支持Python和C++等项目剖析&自译解功能，PDF/LaTex论文" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/binary-husky/gpt_academic" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">binary-husky/gpt_academic</span>
+          <span class="card-stars">★ 71.3k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">为GPT/GLM等LLM大语言模型提供实用化交互接口，特别优化论文阅读/润色/写作体验，模块化设计，支持自定义快捷按钮&函数插件，支持Python和C++等项目剖析&自译解功能，PDF/LaTex论文翻译&总结功能，支持并行问询多种LLM模型，支持chatglm3等本地模型。接入通义千问, deepseekcoder, 讯飞星火, 文心一言, llama2, rwkv, claude2, moss</p>
+          
+          <div class="tags"><span class="tag">academic</span><span class="tag">chatglm-6b</span><span class="tag">chatgpt</span><span class="tag">gpt-4</span><span class="tag">large-language-models</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-picks</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_GitHubDaily_GitHubDaily" data-name="GitHubDaily/GitHubDaily" data-url="https://github.com/GitHubDaily/GitHubDaily" data-desc="坚持分享 GitHub 上高质量、有趣实用的开源技术教程、开发者工具、编程网站、技术资讯。A list cool, interesting projects of GitHub." onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/GitHubDaily/GitHubDaily" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">GitHubDaily/GitHubDaily</span>
+          <span class="card-stars">★ 47.8k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">坚持分享 GitHub 上高质量、有趣实用的开源技术教程、开发者工具、编程网站、技术资讯。A list cool, interesting projects of GitHub.</p>
+          
+          <div class="tags"><span class="tag">ai</span><span class="tag">algorithms-and-data-structures</span><span class="tag">backend</span><span class="tag">developer-tools</span><span class="tag">development</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-picks</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_hiroi-sora_Umi-OCR" data-name="hiroi-sora/Umi-OCR" data-url="https://github.com/hiroi-sora/Umi-OCR" data-desc="OCR software, free and offline. 开源、免费的离线OCR软件。支持截屏/批量导入图片，PDF文档识别，排除水印/页眉页脚，扫描/生成二维码。内置多国语言库。" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/hiroi-sora/Umi-OCR" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">hiroi-sora/Umi-OCR</span>
+          <span class="card-stars">★ 47.0k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">OCR software, free and offline. 开源、免费的离线OCR软件。支持截屏/批量导入图片，PDF文档识别，排除水印/页眉页脚，扫描/生成二维码。内置多国语言库。</p>
+          
+          <div class="tags"><span class="tag">ocr</span><span class="tag">ocr-python</span><span class="tag">paddleocr</span><span class="tag">qml</span><span class="tag">qt</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-picks</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_siyuan-note_siyuan" data-name="siyuan-note/siyuan" data-url="https://github.com/siyuan-note/siyuan" data-desc="An open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work toget" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/siyuan-note/siyuan" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">siyuan-note/siyuan</span>
+          <span class="card-stars">★ 46.1k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">An open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work together 开源、隐私优先、自托管的知识工作空间，让人与智能体在此协作</p>
+          
+          <div class="tags"><span class="tag">agentic-ai</span><span class="tag">ai-agent</span><span class="tag">digital-garden</span><span class="tag">electron</span><span class="tag">knowledge-base</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-picks</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_Dujltqzv_Some-Many-Books" data-name="Dujltqzv/Some-Many-Books" data-url="https://github.com/Dujltqzv/Some-Many-Books" data-desc="个人收藏书籍列表　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/Dujltqzv/Some-Many-Books" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Dujltqzv/Some-Many-Books</span>
+          <span class="card-stars">★ 23.0k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">个人收藏书籍列表　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-picks</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_tangyudi_Ai-Learn" data-name="tangyudi/Ai-Learn" data-url="https://github.com/tangyudi/Ai-Learn" data-desc="人工智能学习路线图，整理近200个实战案例与项目，免费提供配套教材，零基础入门，就业实战！包括：Python，数学，机器学习，数据分析，深度学习，计算机视觉，自然语言处理，PyTorch tensor" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/tangyudi/Ai-Learn" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">tangyudi/Ai-Learn</span>
+          <span class="card-stars">★ 13.3k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">人工智能学习路线图，整理近200个实战案例与项目，免费提供配套教材，零基础入门，就业实战！包括：Python，数学，机器学习，数据分析，深度学习，计算机视觉，自然语言处理，PyTorch tensorflow machine-learning,deep-learning data-analysis data-mining mathematics data-science artificial-in</p>
+          
+          <div class="tags"><span class="tag">algorithm</span><span class="tag">artificial-intelligence</span><span class="tag">caffe</span><span class="tag">cv</span><span class="tag">data-analysis</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-picks</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_jikexueyuanwiki_tensorflow-zh" data-name="jikexueyuanwiki/tensorflow-zh" data-url="https://github.com/jikexueyuanwiki/tensorflow-zh" data-desc="谷歌全新开源人工智能系统TensorFlow官方文档中文版" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/jikexueyuanwiki/tensorflow-zh" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">jikexueyuanwiki/tensorflow-zh</span>
+          <span class="card-stars">★ 12.4k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">谷歌全新开源人工智能系统TensorFlow官方文档中文版</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-picks</span>
+        </div>
+      </a>
+    </div>
+    
+      </div>
+    </section>
+    
+    <section id="chinese_resources" class="section">
+      <h2 class="section-title">📚 📚 资源合集推荐 <span class="count">10</span></h2>
+      <div class="card-grid">
+        
+    <div class="card">
+      <button class="star-btn" data-id="github.com_EbookFoundation_free-programming-books" data-name="EbookFoundation/free-programming-books" data-url="https://github.com/EbookFoundation/free-programming-books" data-desc=":books: Freely available programming books" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/EbookFoundation/free-programming-books" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">EbookFoundation/free-programming-books</span>
+          <span class="card-stars">★ 395.8k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">:books: Freely available programming books</p>
+          
+          <div class="tags"><span class="tag">books</span><span class="tag">education</span><span class="tag">hacktoberfest</span><span class="tag">list</span><span class="tag">resource</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-resource</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_justjavac_free-programming-books-zh_CN" data-name="justjavac/free-programming-books-zh_CN" data-url="https://github.com/justjavac/free-programming-books-zh_CN" data-desc=":books: 免费的计算机编程类中文书籍，欢迎投稿" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/justjavac/free-programming-books-zh_CN" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">justjavac/free-programming-books-zh_CN</span>
+          <span class="card-stars">★ 118.6k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">:books: 免费的计算机编程类中文书籍，欢迎投稿</p>
+          
+          <div class="tags"><span class="tag">android</span><span class="tag">angular</span><span class="tag">books</span><span class="tag">free</span><span class="tag">ios</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-resource</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_jobbole_awesome-programming-books" data-name="jobbole/awesome-programming-books" data-url="https://github.com/jobbole/awesome-programming-books" data-desc="经典编程书籍大全，涵盖：计算机系统与网络、系统架构、算法与数据结构、前端开发、后端开发、移动开发、数据库、测试、项目与团队、程序员职业修炼、求职面试等" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/jobbole/awesome-programming-books" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">jobbole/awesome-programming-books</span>
+          <span class="card-stars">★ 15.5k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">经典编程书籍大全，涵盖：计算机系统与网络、系统架构、算法与数据结构、前端开发、后端开发、移动开发、数据库、测试、项目与团队、程序员职业修炼、求职面试等</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-resource</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_sorenduan_awesome-java-books" data-name="sorenduan/awesome-java-books" data-url="https://github.com/sorenduan/awesome-java-books" data-desc="Java开发者技术书籍大全 - Java入门书籍，Java基础及进阶书籍，框架与中间件，架构设计，设计模式，数学与算法，JVM周边语言，项目管理&领导力&流程，职业素养与个人成长，格局与视野，面试参考" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/sorenduan/awesome-java-books" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">sorenduan/awesome-java-books</span>
+          <span class="card-stars">★ 7.1k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Java开发者技术书籍大全 - Java入门书籍，Java基础及进阶书籍，框架与中间件，架构设计，设计模式，数学与算法，JVM周边语言，项目管理&领导力&流程，职业素养与个人成长，格局与视野，面试参考书等。</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-resource</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_royeo_awesome-programming-books" data-name="royeo/awesome-programming-books" data-url="https://github.com/royeo/awesome-programming-books" data-desc="📚 经典技术书籍推荐，持续更新..." onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/royeo/awesome-programming-books" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">royeo/awesome-programming-books</span>
+          <span class="card-stars">★ 4.9k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">📚 经典技术书籍推荐，持续更新...</p>
+          
+          <div class="tags"><span class="tag">algorithm</span><span class="tag">c</span><span class="tag">clean-code</span><span class="tag">cpp</span><span class="tag">design-pattern</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-resource</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_aluismoya_EbookFoundation-free-programming-books" data-name="aluismoya/EbookFoundation-free-programming-books" data-url="https://github.com/aluismoya/EbookFoundation-free-programming-books" data-desc="免费编程书籍" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/aluismoya/EbookFoundation-free-programming-books" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">aluismoya/EbookFoundation-free-programming-books</span>
+          <span class="card-stars">★ 2.7k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">免费编程书籍</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-resource</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_zero-equals-false_awesome-programming-books" data-name="zero-equals-false/awesome-programming-books" data-url="https://github.com/zero-equals-false/awesome-programming-books" data-desc="📚 A curated list of awesome programming books (Algorithms and data structures, Artificial intelligen" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/zero-equals-false/awesome-programming-books" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">zero-equals-false/awesome-programming-books</span>
+          <span class="card-stars">★ 2.1k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">📚 A curated list of awesome programming books (Algorithms and data structures, Artificial intelligence, Software Architecture, Human–computer interaction, Operating Systems, Database Systems, IT Secur</p>
+          
+          <div class="tags"><span class="tag">awesome</span><span class="tag">awesome-list</span><span class="tag">books</span><span class="tag">learning-resources</span><span class="tag">programming</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-resource</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_cosen1024_awesome-cs-books" data-name="cosen1024/awesome-cs-books" data-url="https://github.com/cosen1024/awesome-cs-books" data-desc="计算机优质电子书整理，并且附带pdf下载链接，包括C，C++，Java，Python，Java，Linux，Go，数据结构与算法，人工智能，计算机基础，面试，设计模式，数据库，前端等" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/cosen1024/awesome-cs-books" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">cosen1024/awesome-cs-books</span>
+          <span class="card-stars">★ 901</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">计算机优质电子书整理，并且附带pdf下载链接，包括C，C++，Java，Python，Java，Linux，Go，数据结构与算法，人工智能，计算机基础，面试，设计模式，数据库，前端等</p>
+          
+          <div class="tags"><span class="tag">ai</span><span class="tag">algorithms</span><span class="tag">c</span><span class="tag">cpp</span><span class="tag">cs-books</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-resource</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_heatroom_awesome-javascript-books" data-name="heatroom/awesome-javascript-books" data-url="https://github.com/heatroom/awesome-javascript-books" data-desc="A collection of awesome online javascript books." onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/heatroom/awesome-javascript-books" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">heatroom/awesome-javascript-books</span>
+          <span class="card-stars">★ 130</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">A collection of awesome online javascript books.</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-resource</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_programmerfriend_awesome-java-books" data-name="programmerfriend/awesome-java-books" data-url="https://github.com/programmerfriend/awesome-java-books" data-desc="A curated list of awesome Java Books" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/programmerfriend/awesome-java-books" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">programmerfriend/awesome-java-books</span>
+          <span class="card-stars">★ 16</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">A curated list of awesome Java Books</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-resource</span>
+        </div>
+      </a>
+    </div>
+    
+      </div>
+    </section>
+    
+        <section id="author_recommends" class="section">
+          <h2 class="section-title">👤 👤 中文作者推荐 <span class="count">10</span></h2>
+          <div class="author-grid">
+            
+    <div class="author-card">
+      <a href="https://github.com/521xueweihan/HelloGitHub" target="_blank" class="author-card-link">
+        <div class="author-card-top">
+          <div class="author-avatar">H</div>
+          <div class="author-meta">
+            <span class="author-name">HelloGitHub 月刊</span>
+            <span class="author-source">👤 削微寒 (521xueweihan)</span>
+          </div>
+          <span class="author-stars">★ 96.3k</span>
+        </div>
+        <div class="author-card-body">
+          <p class="author-desc">每月 28 号分享 GitHub 上有趣、入门级的开源项目，涵盖 Python、Java、Go、前端、AI 等各个领域，每个项目都有中文介绍和截图，已持续发布 124 期。</p>
+          <div class="tags"><span class="tag tag-author">开源项目</span><span class="tag tag-author">月刊</span><span class="tag tag-author">全领域</span><span class="tag tag-author">入门友好</span></div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="author-card">
+      <a href="https://github.com/ascoders/weekly" target="_blank" class="author-card-link">
+        <div class="author-card-top">
+          <div class="author-avatar">前</div>
+          <div class="author-meta">
+            <span class="author-name">前端精读周刊</span>
+            <span class="author-source">👤 黄子毅 (ascoders)</span>
+          </div>
+          <span class="author-stars">★ 31.1k</span>
+        </div>
+        <div class="author-card-body">
+          <p class="author-desc">每周精读一篇国外优质技术文章，深度解读 React、TypeScript、设计模式、源码分析等内容，结合大厂经验做剖析，已出 296 期。</p>
+          <div class="tags"><span class="tag tag-author">前端</span><span class="tag tag-author">深度解读</span><span class="tag tag-author">源码分析</span><span class="tag tag-author">设计模式</span></div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="author-card">
+      <a href="https://github.com/OpenGithubs/weekly" target="_blank" class="author-card-link">
+        <div class="author-card-top">
+          <div class="author-avatar">O</div>
+          <div class="author-meta">
+            <span class="author-name">OpenGithub 精选开源项目周刊</span>
+            <span class="author-source">👤 OpenGithubs 社区</span>
+          </div>
+          <span class="author-stars">★ 1.7k</span>
+        </div>
+        <div class="author-card-body">
+          <p class="author-desc">每周一更新，精选 GitHub 上热门开源项目，涵盖 AI、ChatGPT、算法、工具等，持续更新 3 年+。</p>
+          <div class="tags"><span class="tag tag-author">开源项目</span><span class="tag tag-author">周刊</span><span class="tag tag-author">全领域</span></div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="author-card">
+      <a href="https://github.com/Geekhyt/weekly" target="_blank" class="author-card-link">
+        <div class="author-card-top">
+          <div class="author-avatar">前</div>
+          <div class="author-meta">
+            <span class="author-name">前端食堂技术周刊</span>
+            <span class="author-source">👤 童欧巴 (Geekhyt)</span>
+          </div>
+          <span class="author-stars">★ 2.1k</span>
+        </div>
+        <div class="author-card-body">
+          <p class="author-desc">每周整理前端、全栈、AI 领域的技术资讯、文章、工具，定位轻量资讯汇总，已出 136 期。</p>
+          <div class="tags"><span class="tag tag-author">前端</span><span class="tag tag-author">全栈</span><span class="tag tag-author">AI</span><span class="tag tag-author">资讯汇总</span></div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="author-card">
+      <a href="https://github.com/eryajf/learning-weekly" target="_blank" class="author-card-link">
+        <div class="author-card-top">
+          <div class="author-avatar">二</div>
+          <div class="author-meta">
+            <span class="author-name">二丫讲梵的学习周刊</span>
+            <span class="author-source">👤 二丫讲梵 (eryajf)</span>
+          </div>
+          <span class="author-stars">★ 607</span>
+        </div>
+        <div class="author-card-body">
+          <p class="author-desc">以运维技术和 Go 语言为主，兼收 GitHub 优秀项目，每周筛选优质内容汇总，已持续更新 276 期。</p>
+          <div class="tags"><span class="tag tag-author">运维</span><span class="tag tag-author">Go 语言</span><span class="tag tag-author">DevOps</span><span class="tag tag-author">精选</span></div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="author-card">
+      <a href="https://github.com/chinesehuazhou/python-weekly" target="_blank" class="author-card-link">
+        <div class="author-card-top">
+          <div class="author-avatar">P</div>
+          <div class="author-meta">
+            <span class="author-name">Python 潮流周刊</span>
+            <span class="author-source">👤 豌豆花下猫 (chinesehuazhou)</span>
+          </div>
+          
+        </div>
+        <div class="author-card-body">
+          <p class="author-desc">精心筛选国内外最值得分享的 Python 文章、教程、开源项目、工具、播客和视频，帮助 Python 开发者保持技术敏感度。</p>
+          <div class="tags"><span class="tag tag-author">Python</span><span class="tag tag-author">教程</span><span class="tag tag-author">开源项目</span><span class="tag tag-author">播客</span></div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="author-card">
+      <a href="https://github.com/SwiftOldDriver/iOS-Weekly" target="_blank" class="author-card-link">
+        <div class="author-card-top">
+          <div class="author-avatar">老</div>
+          <div class="author-meta">
+            <span class="author-name">老司机 iOS 周报</span>
+            <span class="author-source">👤 老司机技术 (SwiftOldDriver)</span>
+          </div>
+          
+        </div>
+        <div class="author-card-body">
+          <p class="author-desc">老司机技术团队维护的 iOS 开发者周报，覆盖 Swift、Xcode、Apple 生态最新动态，已出 200+ 期。</p>
+          <div class="tags"><span class="tag tag-author">iOS</span><span class="tag tag-author">Swift</span><span class="tag tag-author">Apple</span><span class="tag tag-author">移动开发</span></div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="author-card">
+      <a href="https://github.com/weijunext/indie-maker-tools" target="_blank" class="author-card-link">
+        <div class="author-card-top">
+          <div class="author-avatar">独</div>
+          <div class="author-meta">
+            <span class="author-name">独立开发变现周刊</span>
+            <span class="author-source">👤 社区维护</span>
+          </div>
+          
+        </div>
+        <div class="author-card-body">
+          <p class="author-desc">关注独立开发者如何赚钱和变现，分享独立开发者的产品思路、运营经验和收入数据。</p>
+          <div class="tags"><span class="tag tag-author">独立开发</span><span class="tag tag-author">变现</span><span class="tag tag-author">产品</span><span class="tag tag-author">创业</span></div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="author-card">
+      <a href="https://weekly.tw93.fun/" target="_blank" class="author-card-link">
+        <div class="author-card-top">
+          <div class="author-avatar">潮</div>
+          <div class="author-meta">
+            <span class="author-name">潮流周刊</span>
+            <span class="author-source">👤 TW93</span>
+          </div>
+          
+        </div>
+        <div class="author-card-body">
+          <p class="author-desc">前端 + 设计美学周刊，每期分享前端技术、设计案例和效率工具，视觉风格清新舒适。</p>
+          <div class="tags"><span class="tag tag-author">前端</span><span class="tag tag-author">设计</span><span class="tag tag-author">效率工具</span><span class="tag tag-author">美学</span></div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="author-card">
+      <a href="https://github.com/Sean10/Sean10" target="_blank" class="author-card-link">
+        <div class="author-card-top">
+          <div class="author-avatar">肖</div>
+          <div class="author-meta">
+            <span class="author-name">肖恩技术周刊</span>
+            <span class="author-source">👤 肖恩 (Sean10)</span>
+          </div>
+          
+        </div>
+        <div class="author-card-body">
+          <p class="author-desc">记录有价值的技术内容，对周内阅读的技术内容精品进行总结整理，保持技术敏感度。</p>
+          <div class="tags"><span class="tag tag-author">综合</span><span class="tag tag-author">技术周刊</span><span class="tag tag-author">精选</span></div>
+        </div>
+      </a>
+    </div>
+    
+          </div>
+        </section>
+        
+    <section id="useful_tools" class="section">
+      <h2 class="section-title">🛠️ 🛠️ 实用软件推荐 <span class="count">10</span></h2>
+      <div class="card-grid">
+        
+    <div class="card">
+      <button class="star-btn" data-id="github.com_prometheus_prometheus" data-name="prometheus/prometheus" data-url="https://github.com/prometheus/prometheus" data-desc="The Prometheus monitoring system and time series database." onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/prometheus/prometheus" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">prometheus/prometheus</span>
+          <span class="card-stars">★ 65.9k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">The Prometheus monitoring system and time series database.</p>
+          
+          <div class="tags"><span class="tag">alerting</span><span class="tag">graphing</span><span class="tag">hacktoberfest</span><span class="tag">metrics</span><span class="tag">monitoring</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">实用工具</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_laurent22_joplin" data-name="laurent22/joplin" data-url="https://github.com/laurent22/joplin" data-desc="Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Andro" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/laurent22/joplin" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">laurent22/joplin</span>
+          <span class="card-stars">★ 56.2k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS.</p>
+          
+          <div class="tags"><span class="tag">android</span><span class="tag">dropbox</span><span class="tag">electron</span><span class="tag">enex-files</span><span class="tag">evernote</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">实用工具</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_android_architecture-samples" data-name="android/architecture-samples" data-url="https://github.com/android/architecture-samples" data-desc="A collection of samples to discuss and showcase different architectural tools and patterns for Andro" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/android/architecture-samples" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">android/architecture-samples</span>
+          <span class="card-stars">★ 45.8k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">A collection of samples to discuss and showcase different architectural tools and patterns for Android apps.</p>
+          
+          <div class="tags"><span class="tag">android</span><span class="tag">android-architecture</span><span class="tag">sample</span><span class="tag">samples</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">实用工具</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_files-community_Files" data-name="files-community/Files" data-url="https://github.com/files-community/Files" data-desc="A modern file manager that helps users organize their files and folders." onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/files-community/Files" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">files-community/Files</span>
+          <span class="card-stars">★ 44.9k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">A modern file manager that helps users organize their files and folders.</p>
+          
+          <div class="tags"><span class="tag">alternatives</span><span class="tag">csharp</span><span class="tag">customization</span><span class="tag">developer-tools</span><span class="tag">dotnet</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">实用工具</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_exelban_stats" data-name="exelban/stats" data-url="https://github.com/exelban/stats" data-desc="macOS system monitor in your menu bar" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/exelban/stats" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">exelban/stats</span>
+          <span class="card-stars">★ 41.6k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">macOS system monitor in your menu bar</p>
+          
+          <div class="tags"><span class="tag">battery</span><span class="tag">bluetooth</span><span class="tag">clock</span><span class="tag">cpu</span><span class="tag">disk</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">实用工具</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_datalab-to_marker" data-name="datalab-to/marker" data-url="https://github.com/datalab-to/marker" data-desc="Convert PDF to markdown + JSON quickly with high accuracy" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/datalab-to/marker" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">datalab-to/marker</span>
+          <span class="card-stars">★ 39.5k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Convert PDF to markdown + JSON quickly with high accuracy</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">实用工具</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_projectdiscovery_nuclei" data-name="projectdiscovery/nuclei" data-url="https://github.com/projectdiscovery/nuclei" data-desc="Nuclei is a fast, customizable vulnerability scanner powered by the global security community and bu" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/projectdiscovery/nuclei" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">projectdiscovery/nuclei</span>
+          <span class="card-stars">★ 31.0k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Nuclei is a fast, customizable vulnerability scanner powered by the global security community and built on a simple YAML-based DSL, enabling collaboration to tackle trending vulnerabilities on the int</p>
+          
+          <div class="tags"><span class="tag">attack-surface</span><span class="tag">cve-scanner</span><span class="tag">dast</span><span class="tag">hacktoberfest</span><span class="tag">nuclei-engine</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">实用工具</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_tastejs_todomvc" data-name="tastejs/todomvc" data-url="https://github.com/tastejs/todomvc" data-desc="Helping you select a JavaScript framework - Todo apps for React.js, Angular, Vue and many more" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/tastejs/todomvc" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">tastejs/todomvc</span>
+          <span class="card-stars">★ 29.0k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Helping you select a JavaScript framework - Todo apps for React.js, Angular, Vue and many more</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">实用工具</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_apache_skywalking" data-name="apache/skywalking" data-url="https://github.com/apache/skywalking" data-desc="APM, Application Performance Monitoring System" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/apache/skywalking" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">apache/skywalking</span>
+          <span class="card-stars">★ 24.9k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">APM, Application Performance Monitoring System</p>
+          
+          <div class="tags"><span class="tag">apm</span><span class="tag">dapper</span><span class="tag">distributed-tracing</span><span class="tag">ebpf</span><span class="tag">logging</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">实用工具</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_notable_notable" data-name="notable/notable" data-url="https://github.com/notable/notable" data-desc="The Markdown-based note-taking app that doesn't suck." onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/notable/notable" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">notable/notable</span>
+          <span class="card-stars">★ 23.5k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">The Markdown-based note-taking app that doesn't suck.</p>
+          
+          <div class="tags"><span class="tag">cross-platform</span><span class="tag">electron</span><span class="tag">linux</span><span class="tag">mac</span><span class="tag">markdown</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">实用工具</span>
+        </div>
+      </a>
+    </div>
+    
+      </div>
+    </section>
+    
+    <section id="trending" class="section">
+      <h2 class="section-title">🔥 Trending 热榜 <span class="count">10</span></h2>
+      <div class="card-grid">
+        
+    <div class="card">
+      <button class="star-btn" data-id="github.com_handsomestWei_patent-disclosure-skill" data-name="handsomestWei/patent-disclosure-skill" data-url="https://github.com/handsomestWei/patent-disclosure-skill" data-desc="中国专利.skill：专利点挖掘与交底书（发明/实用/外观）编写，通俗解读专利，嗅探政策动向，辅助审查答复。" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/handsomestWei/patent-disclosure-skill" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">handsomestWei/patent-disclosure-skill</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">中国专利.skill：专利点挖掘与交底书（发明/实用/外观）编写，通俗解读专利，嗅探政策动向，辅助审查答复。</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_Gitlawb_openclaude" data-name="Gitlawb/openclaude" data-url="https://github.com/Gitlawb/openclaude" data-desc="runs anywhere. uses anything" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/Gitlawb/openclaude" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Gitlawb/openclaude</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">runs anywhere. uses anything</p>
+          <p class="card-cn">📖 runs anywhere. uses anything</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_Imbad0202_academic-research-skills" data-name="Imbad0202/academic-research-skills" data-url="https://github.com/Imbad0202/academic-research-skills" data-desc="Academic Research Skills for Claude Code: research → write → review → revise → finalize" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/Imbad0202/academic-research-skills" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Imbad0202/academic-research-skills</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Academic Research Skills for Claude Code: research → write → review → revise → finalize</p>
+          <p class="card-cn">📖 Academic Research Skills for Claude Code: research → write → review → revise → finalize</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_THU-MAIC_OpenMAIC" data-name="THU-MAIC/OpenMAIC" data-url="https://github.com/THU-MAIC/OpenMAIC" data-desc="Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just o" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/THU-MAIC/OpenMAIC" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">THU-MAIC/OpenMAIC</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click</p>
+          <p class="card-cn">📖 Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_iv-org_invidious" data-name="iv-org/invidious" data-url="https://github.com/iv-org/invidious" data-desc="Invidious is an alternative front-end to YouTube" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/iv-org/invidious" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">iv-org/invidious</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Invidious is an alternative front-end to YouTube</p>
+          <p class="card-cn">📖 Invidious is an alternative front-end to YouTube</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_jingyaogong_minimind" data-name="jingyaogong/minimind" data-url="https://github.com/jingyaogong/minimind" data-desc="🧠 Train a 64M-parameter LLM from scratch in just 2h!" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/jingyaogong/minimind" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">jingyaogong/minimind</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">🧠 Train a 64M-parameter LLM from scratch in just 2h!</p>
+          <p class="card-cn">📖 🧠 Train a 64M-parameter LLM from scratch in just 2h!</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_3b1b_manim" data-name="3b1b/manim" data-url="https://github.com/3b1b/manim" data-desc="Animation engine for explanatory math videos" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/3b1b/manim" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">3b1b/manim</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Animation engine for explanatory math videos</p>
+          <p class="card-cn">📖 Animation engine for explanatory math videos</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_firecrawl_pdf-inspector" data-name="firecrawl/pdf-inspector" data-url="https://github.com/firecrawl/pdf-inspector" data-desc="Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects sca" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/firecrawl/pdf-inspector" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">firecrawl/pdf-inspector</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.</p>
+          <p class="card-cn">📖 Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_browser-use_video-use" data-name="browser-use/video-use" data-url="https://github.com/browser-use/video-use" data-desc="Edit videos with coding agents" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/browser-use/video-use" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">browser-use/video-use</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Edit videos with coding agents</p>
+          <p class="card-cn">📖 Edit videos with coding agents</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_K-Dense-AI_scientific-agent-skills" data-name="K-Dense-AI/scientific-agent-skills" data-url="https://github.com/K-Dense-AI/scientific-agent-skills" data-desc="Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ sc" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/K-Dense-AI/scientific-agent-skills" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">K-Dense-AI/scientific-agent-skills</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biolog</p>
+          <p class="card-cn">📖 Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biolog</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+      </div>
+    </section>
+    
+    <section id="ai_focus" class="section">
+      <h2 class="section-title">🤖 AI 相关项目 <span class="count">10</span></h2>
+      <div class="card-grid">
+        
+    <div class="card">
+      <button class="star-btn" data-id="github.com_handsomestWei_patent-disclosure-skill" data-name="handsomestWei/patent-disclosure-skill" data-url="https://github.com/handsomestWei/patent-disclosure-skill" data-desc="中国专利.skill：专利点挖掘与交底书（发明/实用/外观）编写，通俗解读专利，嗅探政策动向，辅助审查答复。" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/handsomestWei/patent-disclosure-skill" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">handsomestWei/patent-disclosure-skill</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">中国专利.skill：专利点挖掘与交底书（发明/实用/外观）编写，通俗解读专利，嗅探政策动向，辅助审查答复。</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_Gitlawb_openclaude" data-name="Gitlawb/openclaude" data-url="https://github.com/Gitlawb/openclaude" data-desc="runs anywhere. uses anything" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/Gitlawb/openclaude" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Gitlawb/openclaude</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">runs anywhere. uses anything</p>
+          <p class="card-cn">📖 runs anywhere. uses anything</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_Imbad0202_academic-research-skills" data-name="Imbad0202/academic-research-skills" data-url="https://github.com/Imbad0202/academic-research-skills" data-desc="Academic Research Skills for Claude Code: research → write → review → revise → finalize" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/Imbad0202/academic-research-skills" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Imbad0202/academic-research-skills</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Academic Research Skills for Claude Code: research → write → review → revise → finalize</p>
+          <p class="card-cn">📖 Academic Research Skills for Claude Code: research → write → review → revise → finalize</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_THU-MAIC_OpenMAIC" data-name="THU-MAIC/OpenMAIC" data-url="https://github.com/THU-MAIC/OpenMAIC" data-desc="Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just o" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/THU-MAIC/OpenMAIC" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">THU-MAIC/OpenMAIC</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click</p>
+          <p class="card-cn">📖 Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_jingyaogong_minimind" data-name="jingyaogong/minimind" data-url="https://github.com/jingyaogong/minimind" data-desc="🧠 Train a 64M-parameter LLM from scratch in just 2h!" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/jingyaogong/minimind" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">jingyaogong/minimind</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">🧠 Train a 64M-parameter LLM from scratch in just 2h!</p>
+          <p class="card-cn">📖 🧠 Train a 64M-parameter LLM from scratch in just 2h!</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_browser-use_video-use" data-name="browser-use/video-use" data-url="https://github.com/browser-use/video-use" data-desc="Edit videos with coding agents" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/browser-use/video-use" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">browser-use/video-use</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Edit videos with coding agents</p>
+          <p class="card-cn">📖 Edit videos with coding agents</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_K-Dense-AI_scientific-agent-skills" data-name="K-Dense-AI/scientific-agent-skills" data-url="https://github.com/K-Dense-AI/scientific-agent-skills" data-desc="Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ sc" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/K-Dense-AI/scientific-agent-skills" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">K-Dense-AI/scientific-agent-skills</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biolog</p>
+          <p class="card-cn">📖 Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biolog</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_VoltAgent_awesome-design-md" data-name="VoltAgent/awesome-design-md" data-url="https://github.com/VoltAgent/awesome-design-md" data-desc="A collection of DESIGN.md files analysis by popular brand design systems. Drop one into your project" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/VoltAgent/awesome-design-md" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">VoltAgent/awesome-design-md</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">A collection of DESIGN.md files analysis by popular brand design systems. Drop one into your project and let coding agents generate a matching UI.</p>
+          <p class="card-cn">📖 A collection of DESIGN.md files analysis by popular brand design systems. Drop one into your project and let coding agents generate a matching UI.</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_affaan-m_ECC" data-name="affaan-m/ECC" data-url="https://github.com/affaan-m/ECC" data-desc="The agent harness performance optimization system. Skills, instincts, memory, security, and research" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/affaan-m/ECC" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">affaan-m/ECC</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.</p>
+          <p class="card-cn">📖 The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_unclecode_crawl4ai" data-name="unclecode/crawl4ai" data-url="https://github.com/unclecode/crawl4ai" data-desc="🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here:https://discord" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/unclecode/crawl4ai" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">unclecode/crawl4ai</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here:https://discord.gg/jP8KfhDhyN</p>
+          <p class="card-cn">📖 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here:https://discord.gg/jP8KfhDhyN</p>
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+      </div>
+    </section>
+    
+    <section id="data_focus" class="section">
+      <h2 class="section-title">📊 数据开发相关 <span class="count">10</span></h2>
+      <div class="card-grid">
+        
+    <div class="card">
+      <button class="star-btn" data-id="github.com_Dujltqzv_Some-Many-Books" data-name="Dujltqzv/Some-Many-Books" data-url="https://github.com/Dujltqzv/Some-Many-Books" data-desc="个人收藏书籍列表　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/Dujltqzv/Some-Many-Books" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Dujltqzv/Some-Many-Books</span>
+          <span class="card-stars">★ 23.0k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">个人收藏书籍列表　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-picks</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_tangyudi_Ai-Learn" data-name="tangyudi/Ai-Learn" data-url="https://github.com/tangyudi/Ai-Learn" data-desc="人工智能学习路线图，整理近200个实战案例与项目，免费提供配套教材，零基础入门，就业实战！包括：Python，数学，机器学习，数据分析，深度学习，计算机视觉，自然语言处理，PyTorch tensor" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/tangyudi/Ai-Learn" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">tangyudi/Ai-Learn</span>
+          <span class="card-stars">★ 13.3k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">人工智能学习路线图，整理近200个实战案例与项目，免费提供配套教材，零基础入门，就业实战！包括：Python，数学，机器学习，数据分析，深度学习，计算机视觉，自然语言处理，PyTorch tensorflow machine-learning,deep-learning data-analysis data-mining mathematics data-science artificial-in</p>
+          
+          <div class="tags"><span class="tag">algorithm</span><span class="tag">artificial-intelligence</span><span class="tag">caffe</span><span class="tag">cv</span><span class="tag">data-analysis</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-picks</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_zero-equals-false_awesome-programming-books" data-name="zero-equals-false/awesome-programming-books" data-url="https://github.com/zero-equals-false/awesome-programming-books" data-desc="📚 A curated list of awesome programming books (Algorithms and data structures, Artificial intelligen" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/zero-equals-false/awesome-programming-books" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">zero-equals-false/awesome-programming-books</span>
+          <span class="card-stars">★ 2.1k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">📚 A curated list of awesome programming books (Algorithms and data structures, Artificial intelligence, Software Architecture, Human–computer interaction, Operating Systems, Database Systems, IT Secur</p>
+          
+          <div class="tags"><span class="tag">awesome</span><span class="tag">awesome-list</span><span class="tag">books</span><span class="tag">learning-resources</span><span class="tag">programming</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">chinese-resource</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_d3_d3" data-name="d3/d3" data-url="https://github.com/d3/d3" data-desc="Bring data to life with SVG, Canvas and HTML. :bar_chart::chart_with_upwards_trend::tada:" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/d3/d3" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">d3/d3</span>
+          <span class="card-stars">★ 113.6k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Bring data to life with SVG, Canvas and HTML. :bar_chart::chart_with_upwards_trend::tada:</p>
+          
+          <div class="tags"><span class="tag">chart</span><span class="tag">charts</span><span class="tag">d3</span><span class="tag">data-visualization</span><span class="tag">svg</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-search</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_supabase_supabase" data-name="supabase/supabase" data-url="https://github.com/supabase/supabase" data-desc="The Postgres development platform. Supabase gives you a dedicated Postgres database to build your we" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/supabase/supabase" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">supabase/supabase</span>
+          <span class="card-stars">★ 108.7k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.</p>
+          
+          <div class="tags"><span class="tag">ai</span><span class="tag">alternative</span><span class="tag">auth</span><span class="tag">database</span><span class="tag">deno</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-search</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_bregman-arie_devops-exercises" data-name="bregman-arie/devops-exercises" data-url="https://github.com/bregman-arie/devops-exercises" data-desc="Linux, Jenkins, AWS, SRE, Prometheus, Docker, Python, Ansible, Git, Kubernetes, Terraform, OpenStack" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/bregman-arie/devops-exercises" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">bregman-arie/devops-exercises</span>
+          <span class="card-stars">★ 84.3k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Linux, Jenkins, AWS, SRE, Prometheus, Docker, Python, Ansible, Git, Kubernetes, Terraform, OpenStack, SQL, NoSQL, Azure, GCP, DNS, Elastic, Network, Virtualization. DevOps Interview Questions</p>
+          
+          <div class="tags"><span class="tag">ansible</span><span class="tag">aws</span><span class="tag">azure</span><span class="tag">coding</span><span class="tag">containers</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-search</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_grafana_grafana" data-name="grafana/grafana" data-url="https://github.com/grafana/grafana" data-desc="The open and composable observability and data visualization platform. Visualize metrics, logs, and " onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/grafana/grafana" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">grafana/grafana</span>
+          <span class="card-stars">★ 76.5k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">The open and composable observability and data visualization platform. Visualize metrics, logs, and traces from multiple sources like Prometheus, Loki, Elasticsearch, InfluxDB, Postgres and many more.</p>
+          
+          <div class="tags"><span class="tag">alerting</span><span class="tag">analytics</span><span class="tag">business-intelligence</span><span class="tag">dashboard</span><span class="tag">data-visualization</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-search</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_redis_redis" data-name="redis/redis" data-url="https://github.com/redis/redis" data-desc="For developers, who are building real-time data-driven applications, Redis is the preferred, fastest" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/redis/redis" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">redis/redis</span>
+          <span class="card-stars">★ 76.2k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">For developers, who are building real-time data-driven applications, Redis is the preferred, fastest, and most feature-rich cache, data structure server, and document and vector query engine.</p>
+          
+          <div class="tags"><span class="tag">cache</span><span class="tag">caching</span><span class="tag">database</span><span class="tag">distributed-systems</span><span class="tag">in-memory</span></div>
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-search</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_Dokploy_dokploy" data-name="Dokploy/dokploy" data-url="https://github.com/Dokploy/dokploy" data-desc="Open Source Alternative to Vercel, Netlify and Heroku." onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/Dokploy/dokploy" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Dokploy/dokploy</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Open Source Alternative to Vercel, Netlify and Heroku.</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_dbt-labs_dbt-core" data-name="dbt-labs/dbt-core" data-url="https://github.com/dbt-labs/dbt-core" data-desc="dbt enables data analysts and engineers to transform their data using the same practices that softwa" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/dbt-labs/dbt-core" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">dbt-labs/dbt-core</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">dbt enables data analysts and engineers to transform their data using the same practices that software engineers use to build applications.</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-trending</span>
+        </div>
+      </a>
+    </div>
+    
+      </div>
+    </section>
+    
+    <section id="discussions" class="section">
+      <h2 class="section-title">💬 热门讨论 <span class="count">10</span></h2>
+      <div class="card-grid">
+        
+    <div class="card">
+      <button class="star-btn" data-id="github.com_request_request_issues_3142" data-name="Request’s Past, Present and Future" data-url="https://github.com/request/request/issues/3142" data-desc="Before I go into the details and reasoning I’ll get straight to the point. **The most valuable thing" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/request/request/issues/3142" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Request’s Past, Present and Future</span>
+          <span class="card-stars">★ 5.2k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Before I go into the details and reasoning I’ll get straight to the point. **The most valuable thing `request` can do for the JavaScript ecosystem is to go into maintenance mode and stop considering n</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-discussion</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_desktop_desktop_issues_1525" data-name="GitHub Desktop for Linux?" data-url="https://github.com/desktop/desktop/issues/1525" data-desc="Updating this issue with response from @billygriffin from the GitHub Desktop team (updated early 202" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/desktop/desktop/issues/1525" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">GitHub Desktop for Linux?</span>
+          <span class="card-stars">★ 4.8k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Updating this issue with response from @billygriffin from the GitHub Desktop team (updated early 2021):
+
+We have no immediate plans to support an official Linux version, but we continue to evaluate </p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-discussion</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_microsoft_vscode_issues_519" data-name="Allow to change the font size and font of the workbench" data-url="https://github.com/microsoft/vscode/issues/519" data-desc="At the moment, we can only change the font size / font of the editor. If we want to change the font " onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/microsoft/vscode/issues/519" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Allow to change the font size and font of the workbench</span>
+          <span class="card-stars">★ 4.8k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">At the moment, we can only change the font size / font of the editor. If we want to change the font size, we need to use a roundabout method of "zooming in / out". It would be nice if this could be ad</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-discussion</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_zloirock_core-js_issues_1179" data-name="So, what's next?" data-url="https://github.com/zloirock/core-js/issues/1179" data-desc="https://github.com/zloirock/core-js/blob/master/docs/2023-02-14-so-whats-next.md
+
+Politics = ban." onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/zloirock/core-js/issues/1179" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">So, what's next?</span>
+          <span class="card-stars">★ 4.1k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">https://github.com/zloirock/core-js/blob/master/docs/2023-02-14-so-whats-next.md
+
+Politics = ban.</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-discussion</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_keybase_keybase-issues_issues_2798" data-name="gpg: signing failed: Inappropriate ioctl for device" data-url="https://github.com/keybase/keybase-issues/issues/2798" data-desc="When trying to use the bash+curl verifying method on a server, this cryptic error message might happ" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/keybase/keybase-issues/issues/2798" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">gpg: signing failed: Inappropriate ioctl for device</span>
+          <span class="card-stars">★ 3.9k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">When trying to use the bash+curl verifying method on a server, this cryptic error message might happen:
+
+> gpg: signing failed: Inappropriate ioctl for device
+
+Since this is a fatal error and also</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-discussion</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_gustavoguanabara_git-github_issues_3" data-name="Divulgue seu perfil, divulgue seu projeto 🖖" data-url="https://github.com/gustavoguanabara/git-github/issues/3" data-desc="Vamos usar essa Issue para divulgar nossos perfis e os nossos repositórios mais legais.
+
+Não esque" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/gustavoguanabara/git-github/issues/3" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Divulgue seu perfil, divulgue seu projeto 🖖</span>
+          <span class="card-stars">★ 3.4k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Vamos usar essa Issue para divulgar nossos perfis e os nossos repositórios mais legais.
+
+Não esqueça de colocar seu nome, seu perfil e o link para seu projeto. Estou ensinando isso durante a aula so</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-discussion</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_docker_for-mac_issues_7520" data-name="[Workaround in description] Mac is detecting Docker as a malware and keeping it from starting" data-url="https://github.com/docker/for-mac/issues/7520" data-desc="### Description
+
+Whenever Docker is started, this error is shown:
+
+> Malware Blocked. “com.docker.so" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/docker/for-mac/issues/7520" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">[Workaround in description] Mac is detecting Docker as a malware and keeping it from starting</span>
+          <span class="card-stars">★ 3.1k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">### Description
+
+Whenever Docker is started, this error is shown:
+
+> Malware Blocked. “com.docker.socket” was not opened because it contains malware. this action did not harm your Mac.
+
+### Reproduce
+</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-discussion</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_amd_RyzenAI-SW_issues_2" data-name="Linux?" data-url="https://github.com/amd/RyzenAI-SW/issues/2" data-desc="https://www.phoronix.com/news/AMD-Ryzen-AI-Open-Source-Demo
+AMD Has Open-Source Ryzen AI Demo Code " onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/amd/RyzenAI-SW/issues/2" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Linux?</span>
+          <span class="card-stars">★ 2.6k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">https://www.phoronix.com/news/AMD-Ryzen-AI-Open-Source-Demo
+AMD Has Open-Source Ryzen AI Demo Code - But Only For Windows</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-discussion</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_microsoft_vscode_issues_3130" data-name="Allow customization of mouse shortcuts" data-url="https://github.com/microsoft/vscode/issues/3130" data-desc="Some users would like to be able to customize not just pure keyboard shortcuts but also mouse + modi" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/microsoft/vscode/issues/3130" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Allow customization of mouse shortcuts</span>
+          <span class="card-stars">★ 2.6k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Some users would like to be able to customize not just pure keyboard shortcuts but also mouse + modifier ones. These are currently hard coded, for example <kbd>alt</kbd>+click to add a selection.
+
+See</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-discussion</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_anthropics_claudes-c-compiler_issues_1" data-name="Hello world does not compile" data-url="https://github.com/anthropics/claudes-c-compiler/issues/1" data-desc="Tested inside fedora 43 container, ubuntu 26.04 container and on regular fedora 42 installation, sam" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/anthropics/claudes-c-compiler/issues/1" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Hello world does not compile</span>
+          <span class="card-stars">★ 2.5k</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Tested inside fedora 43 container, ubuntu 26.04 container and on regular fedora 42 installation, same error
+Took example directly from README.md
+GCC is present and can compile code just fine:
+```
+root</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-discussion</span>
+        </div>
+      </a>
+    </div>
+    
+      </div>
+    </section>
+    
+    <section id="advisories" class="section">
+      <h2 class="section-title">⚠️ 安全通告 <span class="count">5</span></h2>
+      <div class="card-grid">
+        
+    <div class="card">
+      <button class="star-btn" data-id="github.com_advisories_GHSA-vp52-pcj8-j9qc" data-name="gRPC-Go: Heap Memory Exhaustion (OOM) via HTTP/2 DATA Frame Fragmentation" data-url="https://github.com/advisories/GHSA-vp52-pcj8-j9qc" data-desc="### Impact
+An unauthenticated remote attacker can initiate a gRPC stream and purposefully fragment t" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/advisories/GHSA-vp52-pcj8-j9qc" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">gRPC-Go: Heap Memory Exhaustion (OOM) via HTTP/2 DATA Frame Fragmentation</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">### Impact
+An unauthenticated remote attacker can initiate a gRPC stream and purposefully fragment their payload into millions of tiny (e.g., 1-byte) HTTP/2 DATA frames. Even if the total payload volu</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-advisory</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_advisories_GHSA-68jx-f42c-7599" data-name="TYPO3 CMS - Broken Access Control in Backend and Install Tool" data-url="https://github.com/advisories/GHSA-68jx-f42c-7599" data-desc="### Problem
+The referrer enforcement introduced with [TYPO3-CORE-SA-2020-006](https://news.typo3.com" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/advisories/GHSA-68jx-f42c-7599" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">TYPO3 CMS - Broken Access Control in Backend and Install Tool</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">### Problem
+The referrer enforcement introduced with [TYPO3-CORE-SA-2020-006](https://news.typo3.com/security/advisory/typo3-core-sa-2020-006) ([CVE-2020-11069](https://www.cve.org/CVERecord?id=CVE-20</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-advisory</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_advisories_GHSA-r3j6-gpjw-qfjr" data-name="Filament: Multi-factor authentication (app) codes can still be used after a newer code has been used" data-url="https://github.com/advisories/GHSA-r3j6-gpjw-qfjr" data-desc="A flaw in the handling of one-time codes for app-based multi-factor authentication allows a previous" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/advisories/GHSA-r3j6-gpjw-qfjr" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Filament: Multi-factor authentication (app) codes can still be used after a newer code has been used</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">A flaw in the handling of one-time codes for app-based multi-factor authentication allows a previously issued code to be used after a newer code has already been accepted. This issue does not affect e</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-advisory</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_advisories_GHSA-xwpv-pqxp-5v36" data-name="Filament: Password validity disclosure for accounts denied panel access on login page" data-url="https://github.com/advisories/GHSA-xwpv-pqxp-5v36" data-desc="When multi-factor authentication is enabled, the login page presents the multi-factor challenge befo" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/advisories/GHSA-xwpv-pqxp-5v36" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Filament: Password validity disclosure for accounts denied panel access on login page</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">When multi-factor authentication is enabled, the login page presents the multi-factor challenge before evaluating `canAccessPanel()`. For an account that `canAccessPanel()` denies, submitting the corr</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-advisory</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_advisories_GHSA-52xp-w8hr-xv3c" data-name="Filament: Multi-factor authentication (app) can be bypassed when recovery codes are enabled" data-url="https://github.com/advisories/GHSA-52xp-w8hr-xv3c" data-desc="A flaw in the challenge handling for app-based multi-factor authentication allows the second factor " onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/advisories/GHSA-52xp-w8hr-xv3c" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">Filament: Multi-factor authentication (app) can be bypassed when recovery codes are enabled</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">A flaw in the challenge handling for app-based multi-factor authentication allows the second factor to be bypassed. This issue does not affect email-based MFA. It also only applies when recovery codes</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-advisory</span>
+        </div>
+      </a>
+    </div>
+    
+      </div>
+    </section>
+    
+    <section id="releases" class="section">
+      <h2 class="section-title">🚀 版本发布 <span class="count">10</span></h2>
+      <div class="card-grid">
+        
+    <div class="card">
+      <button class="star-btn" data-id="github.com_anthropics_claude-code_releases_tag_v2.1.258" data-name="anthropics/claude-code v2.1.258" data-url="https://github.com/anthropics/claude-code/releases/tag/v2.1.258" data-desc="## What's changed
+
+- Fixed Claude Code failing to launch on macOS 12 (Monterey), a regression introd" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.258" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">anthropics/claude-code v2.1.258</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">## What's changed
+
+- Fixed Claude Code failing to launch on macOS 12 (Monterey), a regression introduced in 2.1.255
+- Fixed remote and scheduled sessions failing with "user messages must have non-empt</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-release</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_anthropics_claude-code_releases_tag_v2.1.257" data-name="anthropics/claude-code v2.1.257" data-url="https://github.com/anthropics/claude-code/releases/tag/v2.1.257" data-desc="## What's changed
+
+- Added Claude Fable 5.1 (`claude-fable-5-1`), now the default Fable model — 1M c" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.257" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">anthropics/claude-code v2.1.257</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">## What's changed
+
+- Added Claude Fable 5.1 (`claude-fable-5-1`), now the default Fable model — 1M context, $10/$50 per Mtok with $0.25/Mtok cache reads
+- Added "Time format" (`timeFormat`) and `timeZ</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-release</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_anthropics_claude-code_releases_tag_v2.1.252" data-name="anthropics/claude-code v2.1.252" data-url="https://github.com/anthropics/claude-code/releases/tag/v2.1.252" data-desc="## What's changed
+
+- Fixed Bash commands failing with &quot;task output swap refused (tasks dir moved or " onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.252" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">anthropics/claude-code v2.1.252</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">## What's changed
+
+- Fixed Bash commands failing with "task output swap refused (tasks dir moved or linked)" on some Macs
+- Fixed "always allow" not saving in a project that has no .claude/settings.lo</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-release</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_langgenius_dify_releases_tag_1.17.0" data-name="langgenius/dify 1.17.0" data-url="https://github.com/langgenius/dify/releases/tag/1.17.0" data-desc="## New Features
+
+**Agent: E2B Sandbox, Home Snapshots, and Skill Management**
+- **E2B sandbox bac" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/langgenius/dify/releases/tag/1.17.0" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">langgenius/dify 1.17.0</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">## New Features
+
+**Agent: E2B Sandbox, Home Snapshots, and Skill Management**
+- **E2B sandbox backend**: agent shell/code execution can now run on [E2B](https://e2b.dev) cloud sandboxes in addition</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-release</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_langgenius_dify_releases_tag_1.16.1" data-name="langgenius/dify 1.16.1" data-url="https://github.com/langgenius/dify/releases/tag/1.16.1" data-desc="## What's Changed
+
+### New Features
+**Tool Multi-Select Input**
+- Workflow tool nodes now suppor" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/langgenius/dify/releases/tag/1.16.1" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">langgenius/dify 1.16.1</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">## What's Changed
+
+### New Features
+**Tool Multi-Select Input**
+- Workflow tool nodes now support multi-select dropdown inputs, allowing users to choose multiple values from a predefined list when</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-release</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_langgenius_dify_releases_tag_1.16.0" data-name="langgenius/dify 1.16.0" data-url="https://github.com/langgenius/dify/releases/tag/1.16.0" data-desc="# Introducing Dify Agent *(Beta)*: A New Agent Experience in Dify
+
+> [!WARNING]
+> You should prov" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/langgenius/dify/releases/tag/1.16.0" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">langgenius/dify 1.16.0</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc"># Introducing Dify Agent *(Beta)*: A New Agent Experience in Dify
+
+> [!WARNING]
+> You should provide Dify Agent services ⚠️**only to trusted, non-malicious users**⚠️.
+
+As many of you know, the sh</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-release</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_microsoft_vscode_releases_tag_1.135.0" data-name="microsoft/vscode 1.135.0" data-url="https://github.com/microsoft/vscode/releases/tag/1.135.0" data-desc="https://code.visualstudio.com/updates/v1_135" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/microsoft/vscode/releases/tag/1.135.0" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">microsoft/vscode 1.135.0</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">https://code.visualstudio.com/updates/v1_135</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-release</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_microsoft_vscode_releases_tag_1.134.0" data-name="microsoft/vscode 1.134.0" data-url="https://github.com/microsoft/vscode/releases/tag/1.134.0" data-desc="https://code.visualstudio.com/updates/v1_134" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/microsoft/vscode/releases/tag/1.134.0" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">microsoft/vscode 1.134.0</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">https://code.visualstudio.com/updates/v1_134</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-release</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_microsoft_vscode_releases_tag_1.133.0" data-name="microsoft/vscode 1.133.0" data-url="https://github.com/microsoft/vscode/releases/tag/1.133.0" data-desc="https://code.visualstudio.com/updates/v1_133" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/microsoft/vscode/releases/tag/1.133.0" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">microsoft/vscode 1.133.0</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">https://code.visualstudio.com/updates/v1_133</p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-release</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="card">
+      <button class="star-btn" data-id="github.com_pytorch_pytorch_releases_tag_v2.13.0" data-name="pytorch/pytorch v2.13.0" data-url="https://github.com/pytorch/pytorch/releases/tag/v2.13.0" data-desc="# PyTorch 2.13.0 Release Notes
+
+- [Highlights](#highlights)
+- [Backwards Incompatible Changes](#b" onclick="event.preventDefault(); toggleStar(this)" title="点击收藏">☆</button>
+      <a href="https://github.com/pytorch/pytorch/releases/tag/v2.13.0" target="_blank" class="card-link">
+        <div class="card-header">
+          <span class="card-name">pytorch/pytorch v2.13.0</span>
+          <span class="card-stars">★ 0</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc"># PyTorch 2.13.0 Release Notes
+
+- [Highlights](#highlights)
+- [Backwards Incompatible Changes](#backwards-incompatible-changes)
+- [Deprecations](#deprecations)
+- [New Features](#new-features)
+- </p>
+          
+          
+        </div>
+        <div class="card-footer">
+          <span class="card-source">github-release</span>
+        </div>
+      </a>
+    </div>
+    
+      </div>
+    </section>
+    
+  </div>
+
+  <div class="footer">
+    <p>由 WorkBuddy 自动生成 · 每天 10:00 更新</p>
+    <p><a href="https://sct.ftqq.com" target="_blank">微信推送由 Server酱 提供</a></p>
+  </div>
+</body>
+<script>
+const STORAGE_KEY = 'github_digest_favorites';
+function getFavorites() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  } catch(e) {
+    return [];
+  }
+}
+function saveFavorites(favs) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(favs));
+}
+function toggleStar(btn) {
+  const id = btn.dataset.id;
+  const favs = getFavorites();
+  const idx = favs.findIndex(f => f.id === id);
+  if (idx >= 0) {
+    favs.splice(idx, 1);
+    btn.classList.remove('starred');
+    btn.textContent = '☆';
+  } else {
+    favs.push({
+      id: id,
+      name: btn.dataset.name,
+      url: btn.dataset.url,
+      desc: btn.dataset.desc,
+      time: new Date().toISOString()
+    });
+    btn.classList.add('starred');
+    btn.textContent = '★';
+  }
+  saveFavorites(favs);
+  renderFavorites();
+}
+function renderFavorites() {
+  const favs = getFavorites();
+  const list = document.getElementById('favorites-list');
+  const count = document.getElementById('fav-count');
+  const section = document.getElementById('favorites');
+  if (count) count.textContent = favs.length;
+  if (favs.length === 0) {
+    if (list) list.innerHTML = '<div class="empty-state">还没有收藏内容，点击卡片旁的 ☆ 按钮即可收藏</div>';
+    return;
+  }
+  if (list) {
+    list.innerHTML = favs.map(f => `
+      <div class="card">
+        <button class="star-btn starred" data-id="${f.id}" onclick="removeFav('${f.id}')" title="取消收藏">★</button>
+        <a href="${f.url}" target="_blank" class="card-link">
+          <div class="card-header">
+            <span class="card-name">${f.name}</span>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">${f.desc || '暂无描述'}</p>
+          </div>
+          <div class="card-footer">
+            <span class="card-source">收藏于 ${new Date(f.time).toLocaleDateString('zh-CN')}</span>
+          </div>
+        </a>
+      </div>
+    `).join('');
+  }
+}
+function removeFav(id) {
+  const favs = getFavorites().filter(f => f.id !== id);
+  saveFavorites(favs);
+  renderFavorites();
+  document.querySelectorAll('.star-btn[data-id="' + id + '"]').forEach(b => {
+    b.classList.remove('starred');
+    b.textContent = '☆';
+  });
+}
+window.addEventListener('DOMContentLoaded', function() {
+  const favs = getFavorites();
+  const favIds = new Set(favs.map(f => f.id));
+  document.querySelectorAll('.star-btn').forEach(btn => {
+    if (favIds.has(btn.dataset.id)) {
+      btn.classList.add('starred');
+      btn.textContent = '★';
+    }
+  });
+  const favLink = document.querySelector('a[href="#favorites"]');
+  if (favLink) {
+    favLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      const section = document.getElementById('favorites');
+      if (section.style.display === 'none') {
+        section.style.display = 'block';
+        renderFavorites();
+        section.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        section.style.display = 'none';
+      }
+    });
+  }
+});
+</script>
+</html>
